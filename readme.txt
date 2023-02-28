@@ -8,7 +8,6 @@ Create database:
 In .env activate the database link : DATABASE_URL="mysql://root:@127.0.0.1:3306/dbaseemna?charset=utf8mb4"
 Run the following commands to make the db and the entities: 
 symfony console doctrine:database:create
-symfony console make:entity name
 symfony console make:migration  
 symfony console doctrine:migrations:migrate 
 php bin/console doctrine:schema:update –force
@@ -20,3 +19,6 @@ Run the following commands
 mkdir -p config/jwt
 openssl genrsa -out config/jwt/private.pem -aes256 4096 
 openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem
+
+routes:
+

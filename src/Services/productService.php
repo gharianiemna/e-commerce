@@ -1,6 +1,6 @@
 <?php
 
-namespace Services;
+namespace App\Services;
 
 use Symfony\Component\HttpFoundation\Request;
 use App\Service\MessageGenerator;
@@ -15,13 +15,9 @@ use App\Entity\Product;
 class productService{
 
     protected $entityManager;
-    private $security;
     protected $productRepository;
-
-
-    public function __construct(EntityManagerInterface $entityManager, Security $security, ProductRepository $productRepository){
+    public function __construct(EntityManagerInterface $entityManager, ProductRepository $productRepository){
             $this->entityManager = $entityManager;
-            $this->security = $security;
             $this->productRepository = $productRepository;
         }
 

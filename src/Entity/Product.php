@@ -6,7 +6,7 @@ use App\Repository\ProductRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
+use JMS\Serializer\Annotation as Serializer;
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
  */
@@ -16,47 +16,56 @@ class Product
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Serializer\Groups({"products"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Serializer\Groups({"products"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Serializer\Groups({"products"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Serializer\Groups({"products"})
      */
     private $reference;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Serializer\Groups({"products"})
      */
     private $price;
 
     /**
      * @ORM\Column(type="integer")
+     * @Serializer\Groups({"products"})
      */
     private $quantity;
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="product")
      * @ORM\JoinColumn(nullable=true)
+     * @Serializer\Groups({"products"})
      */
     private $category;
 
     /**
      * @ORM\OneToMany(targetEntity=OrderDetails::class, mappedBy="product")
+     * @Serializer\Groups({"products"})
      */
     private $orderDetails;
 
     /**
      * @ORM\ManyToMany(targetEntity=Chart::class, inversedBy="yes")
+     * @Serializer\Groups({"products"})
      */
     private $cart;
 

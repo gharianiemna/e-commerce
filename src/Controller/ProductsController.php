@@ -25,6 +25,7 @@ public function __construct(productService $productService, EntityManagerInterfa
     $this->entityManager = $entityManager;
 }
 
+
 /**
    * @Rest\Get("/")
    * @Rest\View(serializerGroups={"products"})
@@ -33,14 +34,34 @@ public function displayProducts()
     {
         return $this->productService->displayProducts();
     }
+
+/**
+ * @Rest\Get("/category/{category}")
+ * @Rest\View(serializerGroups={"products"})
+ */
+public function displayProductByCategory($category){
+
+    return $this->productService->displayProductByCategory($category);
+}
+
+  /**
+   * @Rest\Get("/search/{search}")
+   * @Rest\View(serializerGroups={"products"})
+   */
+  public function searchProduct($search)
+  {
+
+      return $this->productService->searchProduct($search); 
+  }
+
 /**
    * @Rest\Get("/{id}")
    * @Rest\View(serializerGroups={"products"})
    */
-public function productDetail($id)
-    {
-        return $this->productService->displayProducts($id); 
-    }
+  public function productDetail($id)
+  {
+      return $this->productService->productDetail($id); 
+  }
 
 
 

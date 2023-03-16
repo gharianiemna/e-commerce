@@ -2,32 +2,32 @@
 
 namespace App\Repository;
 
-use App\Entity\Chart;
+use App\Entity\CartDetails;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Chart>
+ * @extends ServiceEntityRepository<CartDetails>
  *
- * @method Chart|null find($id, $lockMode = null, $lockVersion = null)
- * @method Chart|null findOneBy(array $criteria, array $orderBy = null)
- * @method Chart[]    findAll()
- * @method Chart[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method CartDetails|null find($id, $lockMode = null, $lockVersion = null)
+ * @method CartDetails|null findOneBy(array $criteria, array $orderBy = null)
+ * @method CartDetails[]    findAll()
+ * @method CartDetails[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ChartRepository extends ServiceEntityRepository
+class CartDetailsRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Chart::class);
+        parent::__construct($registry, CartDetails::class);
     }
 
     /**
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function add(Chart $entity, bool $flush = true): void
+    public function add(CartDetails $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
         if ($flush) {
@@ -39,7 +39,7 @@ class ChartRepository extends ServiceEntityRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function remove(Chart $entity, bool $flush = true): void
+    public function remove(CartDetails $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);
         if ($flush) {
@@ -48,7 +48,7 @@ class ChartRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Chart[] Returns an array of Chart objects
+    //  * @return CartDetails[] Returns an array of CartDetails objects
     //  */
     /*
     public function findByExampleField($value)
@@ -65,7 +65,7 @@ class ChartRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Chart
+    public function findOneBySomeField($value): ?CartDetails
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.exampleField = :val')

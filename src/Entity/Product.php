@@ -63,15 +63,15 @@ class Product
      */
     private $orderDetails;
 
+
     /**
-     * @ORM\ManyToMany(targetEntity=Chart::class, inversedBy="yes")
-     * @Serializer\Groups({"products"})
+     * @ORM\OneToMany(targetEntity=CartDetails::class, mappedBy="product")
      */
-    private $cart;
+    private $cartDetails;
 
     public function __construct()
     {
-        $this->cart = new ArrayCollection();
+        $this->cartDetails = new ArrayCollection();
     }
 
     
@@ -183,25 +183,31 @@ class Product
     }
 
     /**
-     * @return Collection<int, Chart>
+     * @return Collection<int, CartDetails>
      */
-    public function getCart(): Collection
+    public function getCartDetails(): Collection
     {
-        return $this->cart;
+        return $this->cartDetails;
     }
 
-    public function addCart(Chart $cart): self
+    public function addCartDetail(CartDetails $cartDetail): self
     {
-        if (!$this->cart->contains($cart)) {
-            $this->cart[] = $cart;
+        if (!$this->cartDetails->contains($cartDetail)) {
+            $this->cartDetails[] = $cartDetail;
+            $cartDetail->setProduct($this);
         }
 
         return $this;
     }
 
-    public function removeCart(Chart $cart): self
+    public function removeCartDetail(CartDetails $cartDetail): self
     {
-        $this->cart->removeElement($cart);
+        if ($this->cartDetails->removeElement($cartDetail)) {
+            // set the owning side to null (unless already changed)
+            if ($cartDetail->getProduct() === $this) {
+                $cartDetail->setProduct(null);
+            }
+        }
 
         return $this;
     }

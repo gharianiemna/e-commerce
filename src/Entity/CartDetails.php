@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CartDetailsRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use JMS\Serializer\Annotation as Serializer;
 /**
  * @ORM\Entity(repositoryClass=CartDetailsRepository::class)
  */
@@ -14,23 +14,27 @@ class CartDetails
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Serializer\Groups({"cartDetails"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="integer")
+     * @Serializer\Groups({"cartDetails"})
      */
     private $quantity;
 
     /**
      * @ORM\ManyToOne(targetEntity=Cart::class, inversedBy="cartDetails")
      * @ORM\JoinColumn(nullable=false)
+     * @Serializer\Groups({"cartDetails"})
      */
     private $cart;
 
     /**
      * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="cartDetails")
      * @ORM\JoinColumn(nullable=false)
+     * @Serializer\Groups({"cartDetails"})
      */
     private $product;
 

@@ -25,12 +25,6 @@ class Cart
      */
     private $user;
 
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $quantity;
-
     /**
      * @ORM\Column(type="integer")
      */
@@ -65,17 +59,6 @@ class Cart
         return $this;
     }
 
-    public function getQuantity(): ?int
-    {
-        return $this->quantity;
-    }
-
-    public function setQuantity(int $quantity): self
-    {
-        $this->quantity = $quantity;
-
-        return $this;
-    }
 
     public function getTotal(): ?int
     {

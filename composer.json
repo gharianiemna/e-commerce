@@ -12,6 +12,7 @@
         "friendsofsymfony/rest-bundle": "^3.5",
         "jms/serializer-bundle": "^5.2",
         "lexik/jwt-authentication-bundle": "^2.18",
+        "nelmio/cors-bundle": "^2.3",
         "phpdocumentor/reflection-docblock": "^5.3",
         "sensio/framework-extra-bundle": "^6.2.9",
         "symfony/asset": "4.4.*",
